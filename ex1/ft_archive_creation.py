@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
+from io import TextIOWrapper
+
+
 def main() -> None:
-    discovery_file = None
+    discovery_file: TextIOWrapper | None = None
 
     print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===\n")
     print("Initializing new storage unit: new_discovery.txt")

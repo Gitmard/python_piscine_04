@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
+from io import TextIOWrapper
+
+
 def main() -> None:
-    fragments_file = None
+    fragments_file: TextIOWrapper | None = None
     print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===")
     try:
         try:
