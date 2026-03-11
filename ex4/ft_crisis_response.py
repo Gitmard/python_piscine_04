@@ -8,6 +8,19 @@ def read_archive_request(path: str) -> str:
         return "RESPONSE: Archive not found in storage matrix"
     except PermissionError:
         return "RESPONSE: Security protocols deny access"
+    except Exception:
+        return "RESPONSE: Unkown critical error, the matrix is compromised!"
+
+
+def write_archive_request(path: str, data: str) -> str:
+    try:
+        with open(path, mode="w") as f:
+            f.write(data)
+    except PermissionError:
+        return "RESPONSE: Security protocols deny access"
+    except Exception:
+        return "RESPONSE: Unkown critical error, the matrix is compromised!"
+    return "RESPONSE: Wrote data to archive"
 
 
 def main() -> None:
@@ -18,7 +31,7 @@ def main() -> None:
     print("STATUS: Crisis handled, system stable")
 
     print("\nCRISIS ALERT: Attempting access to 'classified_vault.txt'...")
-    print(read_archive_request("classified_vault.txt"))
+    print(write_archive_request("classified_vault.txt", "classified data"))
     print("STATUS: Crisis handled, system stable")
 
     print("\nROUTINE ACCESS: Attempting access to 'standard_archive.txt'...")
