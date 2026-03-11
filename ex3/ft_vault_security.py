@@ -12,7 +12,7 @@ def main() -> None:
         print("Initiating secure vault access...")
         with (
             open("classified_data.txt") as classified_data,
-            open("security_protocols.txt") as security_protocols
+            open("security_protocols.txt", mode="w") as security_protocols
         ):
             print("Vault connection established with failsafe protocols")
 
@@ -20,9 +20,11 @@ def main() -> None:
             classified_data_content = classified_data.read()
             print(classified_data_content)
 
-            print("\nSECURE PRESERVATION:")
-            security_protocols_content = security_protocols.read()
-            print(security_protocols_content)
+            security_protocols_data = (
+                "[CLASSIFIED] New security protocols archived"
+            )
+            security_protocols.write(security_protocols_data)
+            print(f"\nSECURE PRESERVATION:\n{security_protocols_data}")
     except FileNotFoundError as err:
         print(err)
         raise err
