@@ -11,8 +11,8 @@ def main() -> None:
     try:
         print("Initiating secure vault access...")
         with (
-            open("../classified_data.txt") as classified_data,
-            open("../security_protocols.txt") as security_protocols
+            open("classified_data.txt") as classified_data,
+            open("security_protocols.txt") as security_protocols
         ):
             print("Vault connection established with failsafe protocols")
 
@@ -25,7 +25,7 @@ def main() -> None:
             print(security_protocols_content)
     except FileNotFoundError as err:
         print(err)
-        return
+        raise err
     if (
         classified_data and security_protocols is not None
         and classified_data.closed
@@ -36,4 +36,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as error:
+        print("An unhandled exception occured:", error)
+        print("Exiting...")
