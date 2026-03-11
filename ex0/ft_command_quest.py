@@ -9,14 +9,13 @@ def main() -> None:
     try:
         try:
             print("\nAccessing Storage Vault: ancient_fragment.txt")
-            fragments_file = open("../ancient_fragment.txt")
+            fragments_file = open("ancient_fragment.txt")
             print("Connection established...\n")
         except FileNotFoundError as err:
             print("ERROR: Storage vault not found.")
             raise err
+        print("RECOVERED DATA:")
         print(fragments_file.read())
-    except Exception as err:
-        raise err
     finally:
         if fragments_file is not None:
             fragments_file.close()
@@ -24,4 +23,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as error:
+        print("An unhandled exception occured:", error)
+        print("Exiting...")

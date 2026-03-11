@@ -8,21 +8,33 @@ def main() -> None:
 
     print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===\n")
     print("Initializing new storage unit: new_discovery.txt")
+    discovery_file = open("new_discovery.txt", mode="w")
+    print("Storage unit created successfully...\n")
 
-    discovery_file = open("../new_discovery.txt", mode="w")
-    discovery_file.write("[ENTRY 001] New quantum algorithm discovered\n")
-    discovery_file.write("[ENTRY 002] Efficiency increased by 347%\n")
-    discovery_file.write(
+    data_to_write: list[str] = [
+        "[ENTRY 001] New quantum algorithm discovered\n",
+        "[ENTRY 002] Efficiency increased by 347%\n",
         "[ENTRY 003] Archived by Data Archivist trainee\n"
-    )
+    ]
 
-    discovery_file = open("../new_discovery.txt", mode="r")
-    print(discovery_file.read())
+    try:
+        print("Inscribing preservation data...")
+        for line in data_to_write:
+            discovery_file.write(line)
+            print(line, end="")
+    except Exception as err:
+        raise err
+    finally:
+        discovery_file.close()
+        print("\nData inscription failed. Storage unit sealed.")
 
-    print("Data inscription complete. Storage unit sealed.")
-    discovery_file.close()
+    print("\nData inscription complete. Storage unit sealed.")
     print("Archive 'new_discovery.txt' ready for long-term preservation")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as error:
+        print("An unhandled exception occured:", error)
+        print("Exiting...")
