@@ -42,4 +42,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as error:
+        print("Unkown critical error, the matrix is compromised!\n", error)
+        print("Aborting...")
+        

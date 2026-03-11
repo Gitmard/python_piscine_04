@@ -26,5 +26,5 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as error:
-        print("An unhandled exception occured:", error)
-        print("Exiting...")
+        print("Unkown critical error, the matrix is compromised!\n", error)
+        print("Aborting...")
