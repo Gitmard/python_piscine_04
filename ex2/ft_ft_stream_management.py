@@ -3,12 +3,12 @@
 import sys
 
 
-def write_stdout(message: str, prefix: str = "\n") -> None:
-    print(f"{prefix}[STANDARD] {message}")
+def write_stdout(message: str, prefix: str = "", end: str = "\n") -> None:
+    print(f"{prefix}[STANDARD] {message}", file=sys.stdout, end=end)
 
 
-def write_stderr(message: str, prefix: str = "\n") -> None:
-    print(f"{prefix}[ALERT] {message}", file=sys.stderr)
+def write_stderr(message: str, prefix: str = "", end: str = "\n") -> None:
+    print(f"{prefix}[ALERT] {message}", file=sys.stderr, end=end)
 
 
 def read_stdin(message: str) -> str:
