@@ -8,9 +8,6 @@ def main() -> None:
     write_success: bool = False
 
     print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===\n")
-    print("Initializing new storage unit: new_discovery.txt")
-    discovery_file = open("new_discovery.txt", mode="w")
-    print("Storage unit created successfully...\n")
 
     data_to_write: list[str] = [
         "[ENTRY 001] New quantum algorithm discovered\n",
@@ -19,6 +16,9 @@ def main() -> None:
     ]
 
     try:
+        print("Initializing new storage unit: new_discovery.txt")
+        discovery_file = open("new_discovery.txt", mode="w")
+        print("Storage unit created successfully...\n")
         print("Inscribing preservation data...")
         for line in data_to_write:
             discovery_file.write(line)
