@@ -47,4 +47,3 @@ if __name__ == "__main__":
     except Exception as error:
         print("Unkown critical error, the matrix is compromised!\n", error)
         print("Aborting...")
-        
