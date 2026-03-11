@@ -5,6 +5,7 @@ from io import TextIOWrapper
 
 def main() -> None:
     discovery_file: TextIOWrapper | None = None
+    write_success: bool = False
 
     print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===\n")
     print("Initializing new storage unit: new_discovery.txt")
@@ -22,14 +23,19 @@ def main() -> None:
         for line in data_to_write:
             discovery_file.write(line)
             print(line, end="")
+        write_success = True
     except Exception as err:
         raise err
     finally:
         discovery_file.close()
-        print("\nData inscription failed. Storage unit sealed.")
-
-    print("\nData inscription complete. Storage unit sealed.")
-    print("Archive 'new_discovery.txt' ready for long-term preservation")
+        if not write_success:
+            print("\nData inscription failed. Storage unit sealed.")
+        else:
+            print("\nData inscription complete. Storage unit sealed.")
+            print(
+                "Archive 'new_discovery.txt' ready for long-term",
+                "preservation"
+            )
 
 
 if __name__ == "__main__":
